@@ -484,7 +484,9 @@ footer .logo .mark { width: 24px; height: 24px; }
         <p>Conta rapidinho quem você é. A gente assiste umas lives suas e responde com uma proposta.</p>
       </div>
 
-      <form id="form" novalidate>
+      <form id="form" name="inscricao" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="inscricao">
+        <p style="display:none" aria-hidden="true"><label>Não preencha: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <div class="field">
           <label for="f-name">Seu nome ou nick</label>
           <input type="text" id="f-name" name="name" autocomplete="nickname" required>
@@ -598,8 +600,9 @@ footer .logo .mark { width: 24px; height: 24px; }
     document.getElementById(a.dataset.plan === 'servico' ? 'f-plan-s' : 'f-plan-p').checked = true;
   }));
 
-  // Form: posts JSON to FORM_ENDPOINT (Formspree, Web3Forms...). Empty = preview mode, only shows the summary.
-  const FORM_ENDPOINT = '';
+  // Form: Netlify Forms. Netlify registers the form at deploy time (data-netlify) and takes the
+  // url-encoded POST to the site itself. Opened locally (file:// or localhost) it only shows the summary.
+  const LIVE = location.hostname !== '' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1';
   const form = document.getElementById('form');
   const done = document.getElementById('done');
   const err = document.getElementById('err');
@@ -619,13 +622,13 @@ footer .logo .mark { width: 24px; height: 24px; }
       'Jogo: ' + d.get('game') + ' · ' + d.get('freq') + ' lives/semana\n' +
       'Interesse: ' + d.get('plan') + '\n' +
       'Contato: ' + d.get('contact');
-    if (FORM_ENDPOINT) {
+    if (LIVE) {
       submitBtn.disabled = true; submitBtn.textContent = 'Enviando...';
       try {
-        const r = await fetch(FORM_ENDPOINT, {
+        const r = await fetch('/', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(d))
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(d).toString()
         });
         if (!r.ok) throw new Error(String(r.status));
       } catch (_) {
