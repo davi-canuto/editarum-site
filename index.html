@@ -11,9 +11,12 @@
 <meta property="og:title" content="Editarium · Você joga. A gente corta.">
 <meta property="og:description" content="Seu canal de cortes, sem você editar nada. Edição de lives para streamers.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://editarium.io/">
+<meta property="og:url" content="https://editarium.com.br/">
 <meta name="theme-color" content="#0A0F2E">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:image" content="https://editarium.com.br/icon-512.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -287,6 +290,10 @@ footer { background: var(--night); color: var(--on-dark-muted); padding-block: 4
 footer .inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
 footer .logo span { font-size: 16px; }
 footer .logo .mark { width: 24px; height: 24px; }
+footer .foot-meta a { color: var(--yellow); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+footer .foot-meta a:hover { text-decoration: underline; }
+.apply .lede .mail { font-size: 16px; }
+.apply .lede .mail a { font-weight: 800; color: var(--night); overflow-wrap: anywhere; }
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -511,6 +518,7 @@ footer .logo .mark { width: 24px; height: 24px; }
         <span class="label">[ out ]</span>
         <h2 data-i18n="t95" class="display">Bora montar o seu canal</h2>
         <p data-i18n="t96">Conta rapidinho quem você é. A gente assiste umas lives suas e responde com uma proposta.</p>
+        <p class="mail"><span data-i18n="t114">Prefere e-mail?</span> <a href="mailto:editarium.contacts@gmail.com">editarium.contacts@gmail.com</a></p>
       </div>
 
       <form id="form" name="inscricao" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
@@ -576,7 +584,7 @@ footer .logo .mark { width: 24px; height: 24px; }
     <a class="logo" href="#topo" aria-label="Editarium, voltar ao topo">
       <svg class="mark" aria-hidden="true"><use href="#mark"/></svg><span>EDITARIUM</span>
     </a>
-    <span data-i18n="t113">Da live pro canal · editarium.io</span>
+    <span class="foot-meta"><span data-i18n="t113">Da live pro canal · editarium.com.br</span> · <a href="mailto:editarium.contacts@gmail.com">editarium.contacts@gmail.com</a></span>
   </div>
 </footer>
 
@@ -698,7 +706,8 @@ footer .logo .mark { width: 24px; height: 24px; }
     "t110": "Received.",
     "t111": "Thanks! We’ll watch a few of your streams and reach out through the contact you sent. Here’s what we got:",
     "t112": "Edit answer",
-    "t113": "From stream to channel · editarium.io"
+    "t113": "From stream to channel · editarium.com.br",
+    "t114": "Prefer email?"
     };
   const ATTRS = [
     ['nav.nav', 'aria-label', 'Main'],

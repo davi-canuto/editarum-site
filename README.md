@@ -1,6 +1,6 @@
 # editarium-site
 
-Landing page for Editarium (editarium.io): editing studio for streamers.
+Landing page for Editarium (editarium.com.br): editing studio for streamers.
 Static site, no build step: `index.html`, `favicon.svg`, `img/`.
 
 - Brand: direction B "in/out points" (cobalt `#1C33E0`, yellow `#FFDD00`, night `#0A0F2E`, Archivo + JetBrains Mono).
