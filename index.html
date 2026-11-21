@@ -120,6 +120,13 @@ body::before {
 .nav .btn { padding: 10px 14px; font-size: 13px; box-shadow: none; }
 @media (max-width: 760px) { .nav-links a:not(.btn) { display: none; } }
 
+.lang {
+  font-family: var(--f-mono); font-size: 13px; font-weight: 700; letter-spacing: .06em;
+  background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.5);
+  border-radius: 4px; padding: 7px 10px; cursor: pointer;
+}
+.lang:hover { border-color: var(--yellow); color: var(--yellow); }
+
 /* Hero */
 .hero { background: var(--cobalt); color: var(--white); padding-block: clamp(48px, 8vw, 96px) clamp(56px, 8vw, 96px); overflow: hidden; }
 .hero .inner { display: grid; gap: clamp(40px, 6vw, 64px); }
@@ -290,11 +297,12 @@ footer .logo .mark { width: 24px; height: 24px; }
       <svg class="mark" aria-hidden="true"><use href="#mark"/></svg><span>EDITARIUM</span>
     </a>
     <div class="nav-links">
-      <a href="#como">Como funciona</a>
-      <a href="#clientes">Clientes</a>
-      <a href="#planos">Planos</a>
-      <a href="#perguntas">Perguntas</a>
-      <a class="btn btn-yellow" href="#quero">Quero meu canal</a>
+      <a data-i18n="t0" href="#como">Como funciona</a>
+      <a data-i18n="t1" href="#clientes">Clientes</a>
+      <a data-i18n="t2" href="#planos">Planos</a>
+      <a data-i18n="t3" href="#perguntas">Perguntas</a>
+      <button class="lang" id="lang" type="button" aria-label="Switch to English">EN</button>
+      <a data-i18n="t4" class="btn btn-yellow" href="#quero">Quero meu canal</a>
     </div>
   </div>
 </nav>
@@ -302,23 +310,23 @@ footer .logo .mark { width: 24px; height: 24px; }
 <header class="hero" id="topo">
   <div class="inner">
     <div class="hero-copy">
-      <span class="label" style="color: var(--yellow);">[ in ] edição de lives para streamers</span>
-      <h1 class="display">Você joga.<br><em>A gente corta.</em></h1>
-      <p class="sub">Seu canal de cortes, sem você editar nada. A gente pega o VOD da Twitch, edita a partida, faz thumb, título e Shorts, e só publica no YouTube depois do seu ok.</p>
+      <span data-i18n="t5" class="label" style="color: var(--yellow);">[ in ] edição de lives para streamers</span>
+      <h1 data-i18n="t6" class="display">Você joga.<br><em>A gente corta.</em></h1>
+      <p data-i18n="t7" class="sub">Seu canal de cortes, sem você editar nada. A gente pega o VOD da Twitch, edita a partida, faz thumb, título e Shorts, e só publica no YouTube depois do seu ok.</p>
       <ul class="hero-points">
-        <li><b>Vídeo novo todo dia</b><span>Fez live, tem vídeo no canal no dia seguinte.</span></li>
-        <li><b>Você só joga</b><span>Nada de mandar link, separar trecho ou editar.</span></li>
-        <li><b>Preço baixo</b><span>Parceria sem custo, ou edição por vídeo que cabe no bolso.</span></li>
+        <li><b data-i18n="t8">Vídeo novo todo dia</b><span data-i18n="t9">Fez live, tem vídeo no canal no dia seguinte.</span></li>
+        <li><b data-i18n="t10">Você só joga</b><span data-i18n="t11">Nada de mandar link, separar trecho ou editar.</span></li>
+        <li><b data-i18n="t12">Preço baixo</b><span data-i18n="t13">Parceria sem custo, ou edição por vídeo que cabe no bolso.</span></li>
       </ul>
       <div class="hero-cta">
-        <a class="btn btn-yellow" href="#quero">Quero meu canal de cortes</a>
-        <a class="btn btn-ghost" href="#como">Ver como funciona</a>
+        <a data-i18n="t14" class="btn btn-yellow" href="#quero">Quero meu canal de cortes</a>
+        <a data-i18n="t15" class="btn btn-ghost" href="#como">Ver como funciona</a>
       </div>
     </div>
 
     <div class="tl" aria-label="Exemplo: uma live de 6 horas com o trecho escolhido entre os colchetes">
       <div class="tl-head">
-        <span class="rec"><i></i>VOD · live de 6h12</span>
+        <span data-i18n="t16" class="rec"><i></i>VOD · live de 6h12</span>
         <span class="sel" id="sel">[ in ] 01:51:20 → [ out ] 02:44:05 · partida 2</span>
       </div>
       <div class="track" id="track">
@@ -326,9 +334,9 @@ footer .logo .mark { width: 24px; height: 24px; }
       </div>
       <div class="ticks" aria-hidden="true"><span>0:00</span><span>1:00</span><span>2:00</span><span>3:00</span><span>4:00</span><span>5:00</span><span>6:00</span></div>
       <div class="legend">
-        <span><i style="background: var(--yellow)"></i>abate ou morte</span>
-        <span><i style="background: var(--white)"></i>dragão, barão, torre</span>
-        <span><i style="background: rgba(255,255,255,.55)"></i>fala com o chat</span>
+        <span data-i18n="t17"><i style="background: var(--yellow)"></i>abate ou morte</span>
+        <span data-i18n="t18"><i style="background: var(--white)"></i>dragão, barão, torre</span>
+        <span data-i18n="t19"><i style="background: rgba(255,255,255,.55)"></i>fala com o chat</span>
       </div>
     </div>
   </div>
@@ -338,30 +346,30 @@ footer .logo .mark { width: 24px; height: 24px; }
   <section class="band" id="como">
     <div class="inner">
       <div class="head">
-        <span class="label">Do VOD ao vídeo</span>
-        <h2 class="display">Você faz a live. O resto é com a gente.</h2>
-        <p>Cada vídeo tem uns 35 minutos: o começo da live, as runas e a partida inteira, sem o tempo morto. Se a live foi curta, juntamos com a próxima.</p>
+        <span data-i18n="t20" class="label">Do VOD ao vídeo</span>
+        <h2 data-i18n="t21" class="display">Você faz a live. O resto é com a gente.</h2>
+        <p data-i18n="t22">Cada vídeo tem uns 35 minutos: o começo da live, as runas e a partida inteira, sem o tempo morto. Se a live foi curta, juntamos com a próxima.</p>
       </div>
       <div class="steps">
         <div class="step">
-          <span class="tc">00:00 · você</span>
-          <h3>Faz a sua live</h3>
-          <p>Joga como sempre. A gente puxa o VOD direto do seu canal na Twitch ou no YouTube.</p>
+          <span data-i18n="t23" class="tc">00:00 · você</span>
+          <h3 data-i18n="t27">Faz a sua live</h3>
+          <p data-i18n="t28">Joga como sempre. A gente puxa o VOD direto do seu canal na Twitch ou no YouTube.</p>
         </div>
         <div class="step">
-          <span class="tc">00:10 · a gente</span>
-          <h3>Acha a partida e corta</h3>
-          <p>Puxamos a partida pela API da Riot e cortamos ida à base, tela cinza e silêncio longo. As jogadas ficam.</p>
+          <span data-i18n="t24" class="tc">00:10 · a gente</span>
+          <h3 data-i18n="t29">Acha a partida e corta</h3>
+          <p data-i18n="t30">Puxamos a partida pela API da Riot e cortamos ida à base, tela cinza e silêncio longo. As jogadas ficam.</p>
         </div>
         <div class="step">
-          <span class="tc">00:20 · a gente</span>
-          <h3>Monta a embalagem</h3>
-          <p>Thumb com o seu rosto, título, descrição com capítulos, legendas e as mensagens do chat que você leu na live.</p>
+          <span data-i18n="t25" class="tc">00:20 · a gente</span>
+          <h3 data-i18n="t31">Monta a embalagem</h3>
+          <p data-i18n="t32">Thumb com o seu rosto, título, descrição com capítulos, legendas e as mensagens do chat que você leu na live.</p>
         </div>
         <div class="step">
-          <span class="tc">00:30 · você</span>
-          <h3>Aprova e a gente sobe</h3>
-          <p>Você vê o vídeo pronto antes. Nada vai para o YouTube sem o seu ok, nem agendado.</p>
+          <span data-i18n="t26" class="tc">00:30 · você</span>
+          <h3 data-i18n="t33">Aprova e a gente sobe</h3>
+          <p data-i18n="t34">Você vê o vídeo pronto antes. Nada vai para o YouTube sem o seu ok, nem agendado.</p>
         </div>
       </div>
     </div>
@@ -370,9 +378,9 @@ footer .logo .mark { width: 24px; height: 24px; }
   <section class="band clients" id="clientes">
     <div class="inner">
       <div class="head">
-        <span class="label">Quem já está com a gente</span>
-        <h2 class="display">O canal do Titiltei, editado pela gente</h2>
-        <p>Começamos a editar as partidas do Titiltei em novembro. O público notou a diferença nos comentários.</p>
+        <span data-i18n="t35" class="label">Quem já está com a gente</span>
+        <h2 data-i18n="t36" class="display">O canal do Titiltei, editado pela gente</h2>
+        <p data-i18n="t37">Começamos a editar as partidas do Titiltei em novembro. O público notou a diferença nos comentários.</p>
       </div>
       <div class="case">
         <div class="case-top">
@@ -385,12 +393,12 @@ footer .logo .mark { width: 24px; height: 24px; }
           </div>
         </div>
         <div class="quotes">
-          <figure class="quote" style="margin:0"><p>ediçao ficou top, musiquinha de trilha dos campeoes</p><footer><span>@cazuzajardineiro12</span><span>8 curtidas</span></footer></figure>
-          <figure class="quote" style="margin:0"><p>Agora sim edição digna da gameplay</p><footer><span>@TheViniciusbruno</span><span></span></footer></figure>
-          <figure class="quote" style="margin:0"><p>caralho, parabéns ao editor.</p><footer><span>@wenndeldourado8886</span><span></span></footer></figure>
-          <figure class="quote" style="margin:0"><p>a música está espetacular durante a partida, inclusive a mudança quando tá tendo tensão e relaxamento, o contraste está perfeito</p><footer><span>@souogr</span><span></span></footer></figure>
+          <figure class="quote" style="margin:0"><p data-i18n="t38">ediçao ficou top, musiquinha de trilha dos campeoes</p><footer><span>@cazuzajardineiro12</span><span data-i18n="t42">8 curtidas</span></footer></figure>
+          <figure class="quote" style="margin:0"><p data-i18n="t39">Agora sim edição digna da gameplay</p><footer><span>@TheViniciusbruno</span><span></span></footer></figure>
+          <figure class="quote" style="margin:0"><p data-i18n="t40">caralho, parabéns ao editor.</p><footer><span>@wenndeldourado8886</span><span></span></footer></figure>
+          <figure class="quote" style="margin:0"><p data-i18n="t41">a música está espetacular durante a partida, inclusive a mudança quando tá tendo tensão e relaxamento, o contraste está perfeito</p><footer><span>@souogr</span><span></span></footer></figure>
         </div>
-        <a class="btn btn-yellow" href="#quero" data-plan="parceria">Quero um canal assim</a>
+        <a data-i18n="t43" class="btn btn-yellow" href="#quero" data-plan="parceria">Quero um canal assim</a>
       </div>
     </div>
   </section>
@@ -398,36 +406,36 @@ footer .logo .mark { width: 24px; height: 24px; }
   <section class="band" id="planos">
     <div class="inner">
       <div class="head">
-        <span class="label">Dois jeitos de trabalhar</span>
-        <h2 class="display">Parceria ou serviço</h2>
-        <p>Na parceria a gente cria e toca um canal de cortes para você. No serviço você paga pela edição e publica no canal que quiser.</p>
+        <span data-i18n="t44" class="label">Dois jeitos de trabalhar</span>
+        <h2 data-i18n="t45" class="display">Parceria ou serviço</h2>
+        <p data-i18n="t46">Na parceria a gente cria e toca um canal de cortes para você. No serviço você paga pela edição e publica no canal que quiser.</p>
       </div>
       <div class="offers">
         <article class="offer feat">
-          <span class="label">Parceria</span>
-          <h3 class="display">Canal de cortes</h3>
-          <span class="price">Sem custo. Dividimos o AdSense.</span>
-          <p>Para quem quer um canal de cortes rodando sem gastar nada nem perder tempo editando.</p>
+          <span data-i18n="t47" class="label">Parceria</span>
+          <h3 data-i18n="t48" class="display">Canal de cortes</h3>
+          <span data-i18n="t49" class="price">Sem custo. Dividimos o AdSense.</span>
+          <p data-i18n="t50">Para quem quer um canal de cortes rodando sem gastar nada nem perder tempo editando.</p>
           <ul>
-            <li>A gente cria o canal com a sua cara: avatar, banner, padrão de thumb.</li>
-            <li>Vídeo novo todo dia que você fizer live.</li>
-            <li>Shorts tirados dos melhores momentos de cada vídeo.</li>
-            <li>O canal é seu. Você é dono da conta e pode encerrar quando quiser.</li>
+            <li data-i18n="t51">A gente cria o canal com a sua cara: avatar, banner, padrão de thumb.</li>
+            <li data-i18n="t52">Vídeo novo todo dia que você fizer live.</li>
+            <li data-i18n="t53">Shorts tirados dos melhores momentos de cada vídeo.</li>
+            <li data-i18n="t54">O canal é seu. Você é dono da conta e pode encerrar quando quiser.</li>
           </ul>
-          <a class="btn btn-yellow" href="#quero" data-plan="parceria">Quero a parceria</a>
+          <a data-i18n="t55" class="btn btn-yellow" href="#quero" data-plan="parceria">Quero a parceria</a>
         </article>
         <article class="offer">
-          <span class="label">Serviço</span>
-          <h3 class="display">Edição por vídeo</h3>
-          <span class="price">Barato, por vídeo ou por pacote</span>
-          <p>Para quem já tem canal no YouTube e quer só a edição. Boa parte do corte é automática, então sai bem mais barato que um editor fixo.</p>
+          <span data-i18n="t56" class="label">Serviço</span>
+          <h3 data-i18n="t57" class="display">Edição por vídeo</h3>
+          <span data-i18n="t58" class="price">Barato, por vídeo ou por pacote</span>
+          <p data-i18n="t59">Para quem já tem canal no YouTube e quer só a edição. Boa parte do corte é automática, então sai bem mais barato que um editor fixo.</p>
           <ul>
-            <li>O mesmo vídeo completo: edição, thumb, título, capítulos e legendas.</li>
-            <li>Você publica, ou a gente publica no seu canal com o seu ok.</li>
-            <li>Shorts à parte, se quiser.</li>
-            <li>Orçamento pelo número de lives por semana.</li>
+            <li data-i18n="t60">O mesmo vídeo completo: edição, thumb, título, capítulos e legendas.</li>
+            <li data-i18n="t61">Você publica, ou a gente publica no seu canal com o seu ok.</li>
+            <li data-i18n="t62">Shorts à parte, se quiser.</li>
+            <li data-i18n="t63">Orçamento pelo número de lives por semana.</li>
           </ul>
-          <a class="btn btn-night" href="#quero" data-plan="servico">Quero orçamento</a>
+          <a data-i18n="t64" class="btn btn-night" href="#quero" data-plan="servico">Quero orçamento</a>
         </article>
       </div>
     </div>
@@ -436,16 +444,16 @@ footer .logo .mark { width: 24px; height: 24px; }
   <section class="band deliver">
     <div class="inner">
       <div class="head">
-        <span class="label">Cada vídeo vem com</span>
-        <h2 class="display">Pronto pra subir</h2>
+        <span data-i18n="t65" class="label">Cada vídeo vem com</span>
+        <h2 data-i18n="t66" class="display">Pronto pra subir</h2>
       </div>
       <div class="kit">
-        <div><span class="file">video.mp4</span><b>O vídeo editado</b><span>Uma ou duas partidas, áudio nivelado no padrão do YouTube (−14 LUFS).</span></div>
-        <div><span class="file">thumb.jpg</span><b>Thumb</b><span>Com foto sua de verdade sobre a skin, no estilo do seu canal.</span></div>
-        <div><span class="file">titulo.txt</span><b>Título e descrição</b><span>Sem spoiler, com os capítulos de cada partida já marcados.</span></div>
-        <div><span class="file">legendas.srt</span><b>Legendas</b><span>Geradas da transcrição da live, prontas para o YouTube.</span></div>
-        <div><span class="file">shorts/</span><b>Shorts</b><span>Os melhores momentos em vertical, também sem entregar o resultado.</span></div>
-        <div><span class="file">chat</span><b>Mensagens do chat</b><span>As mensagens que você leu na live aparecem na tela na hora certa.</span></div>
+        <div><span class="file">video.mp4</span><b data-i18n="t67">O vídeo editado</b><span data-i18n="t68">Uma ou duas partidas, áudio nivelado no padrão do YouTube (−14 LUFS).</span></div>
+        <div><span class="file">thumb.jpg</span><b data-i18n="t69">Thumb</b><span data-i18n="t70">Com foto sua de verdade sobre a skin, no estilo do seu canal.</span></div>
+        <div><span data-i18n="t71" class="file">titulo.txt</span><b data-i18n="t72">Título e descrição</b><span data-i18n="t73">Sem spoiler, com os capítulos de cada partida já marcados.</span></div>
+        <div><span data-i18n="t74" class="file">legendas.srt</span><b data-i18n="t75">Legendas</b><span data-i18n="t76">Geradas da transcrição da live, prontas para o YouTube.</span></div>
+        <div><span class="file">shorts/</span><b>Shorts</b><span data-i18n="t77">Os melhores momentos em vertical, também sem entregar o resultado.</span></div>
+        <div><span class="file">chat</span><b data-i18n="t78">Mensagens do chat</b><span data-i18n="t79">As mensagens que você leu na live aparecem na tela na hora certa.</span></div>
       </div>
     </div>
   </section>
@@ -453,37 +461,37 @@ footer .logo .mark { width: 24px; height: 24px; }
   <section class="band" id="perguntas">
     <div class="inner">
       <div class="head">
-        <span class="label">Perguntas</span>
-        <h2 class="display">Antes de você perguntar</h2>
+        <span data-i18n="t3" class="label">Perguntas</span>
+        <h2 data-i18n="t80" class="display">Antes de você perguntar</h2>
       </div>
       <div class="faq">
         <details>
-          <summary>O canal de cortes fica no meu nome?</summary>
-          <p>Fica. Na parceria, a conta do canal é sua e a gente entra como gerente. Se quiser encerrar, você tira o nosso acesso e o canal continua seu, com todos os vídeos.</p>
+          <summary data-i18n="t81">O canal de cortes fica no meu nome?</summary>
+          <p data-i18n="t82">Fica. Na parceria, a conta do canal é sua e a gente entra como gerente. Se quiser encerrar, você tira o nosso acesso e o canal continua seu, com todos os vídeos.</p>
         </details>
         <details>
-          <summary>Como funciona a divisão do AdSense?</summary>
-          <p>A proposta padrão é meio a meio da receita do canal de cortes. O acordo fica por escrito antes do primeiro vídeo.</p>
+          <summary data-i18n="t83">Como funciona a divisão do AdSense?</summary>
+          <p data-i18n="t84">A proposta padrão é meio a meio da receita do canal de cortes. O acordo fica por escrito antes do primeiro vídeo.</p>
         </details>
         <details>
-          <summary>Quais jogos vocês editam?</summary>
-          <p>Começamos com League of Legends, porque o corte usa os dados da partida. Outros jogos entram aos poucos. Se você joga outra coisa, manda assim mesmo que a gente conversa.</p>
+          <summary data-i18n="t85">Quais jogos vocês editam?</summary>
+          <p data-i18n="t86">Começamos com League of Legends, porque o corte usa os dados da partida. Outros jogos entram aos poucos. Se você joga outra coisa, manda assim mesmo que a gente conversa.</p>
         </details>
         <details>
-          <summary>Preciso fazer alguma coisa durante a live?</summary>
-          <p>Não. Você faz a live como sempre. Se quiser, mandamos uns detalhes que deixam o vídeo melhor, como mostrar a tela de runas antes da partida.</p>
+          <summary data-i18n="t87">Preciso fazer alguma coisa durante a live?</summary>
+          <p data-i18n="t88">Não. Você faz a live como sempre. Se quiser, mandamos uns detalhes que deixam o vídeo melhor, como mostrar a tela de runas antes da partida.</p>
         </details>
         <details>
-          <summary>Quanto tempo leva para o vídeo ficar pronto?</summary>
-          <p>O vídeo da live sai no dia seguinte. Quem faz live todo dia tem vídeo novo todo dia. Live curta a gente junta com a próxima, para o vídeo não ficar curto demais.</p>
+          <summary data-i18n="t89">Quanto tempo leva para o vídeo ficar pronto?</summary>
+          <p data-i18n="t90">O vídeo da live sai no dia seguinte. Quem faz live todo dia tem vídeo novo todo dia. Live curta a gente junta com a próxima, para o vídeo não ficar curto demais.</p>
         </details>
         <details>
-          <summary>Quanto custa?</summary>
-          <p>Na parceria, nada: a gente se paga com a divisão do AdSense do canal de cortes. No serviço, você paga por vídeo ou por pacote mensal, e como boa parte do corte é automática, o preço fica bem abaixo de um editor fixo.</p>
+          <summary data-i18n="t91">Quanto custa?</summary>
+          <p data-i18n="t92">Na parceria, nada: a gente se paga com a divisão do AdSense do canal de cortes. No serviço, você paga por vídeo ou por pacote mensal, e como boa parte do corte é automática, o preço fica bem abaixo de um editor fixo.</p>
         </details>
         <details>
-          <summary>Posso pedir para mudar algo antes de subir?</summary>
-          <p>Pode. Você aprova cada vídeo, thumb e título. O que não gostar, a gente refaz antes de publicar.</p>
+          <summary data-i18n="t93">Posso pedir para mudar algo antes de subir?</summary>
+          <p data-i18n="t94">Pode. Você aprova cada vídeo, thumb e título. O que não gostar, a gente refaz antes de publicar.</p>
         </details>
       </div>
     </div>
@@ -493,62 +501,63 @@ footer .logo .mark { width: 24px; height: 24px; }
     <div class="inner">
       <div class="lede">
         <span class="label">[ out ]</span>
-        <h2 class="display">Bora montar o seu canal</h2>
-        <p>Conta rapidinho quem você é. A gente assiste umas lives suas e responde com uma proposta.</p>
+        <h2 data-i18n="t95" class="display">Bora montar o seu canal</h2>
+        <p data-i18n="t96">Conta rapidinho quem você é. A gente assiste umas lives suas e responde com uma proposta.</p>
       </div>
 
       <form id="form" name="inscricao" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="inscricao">
+        <input type="hidden" name="lang" id="f-lang" value="pt">
         <p style="display:none" aria-hidden="true"><label>Não preencha: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <div class="field">
-          <label for="f-name">Seu nome ou nick</label>
+          <label data-i18n="t97" for="f-name">Seu nome ou nick</label>
           <input type="text" id="f-name" name="name" autocomplete="nickname" required>
         </div>
         <div class="field">
-          <label for="f-channel">Canal da Twitch ou YouTube</label>
+          <label data-i18n="t98" for="f-channel">Canal da Twitch ou YouTube</label>
           <input type="text" id="f-channel" name="channel" placeholder="twitch.tv/seunick" required>
         </div>
         <div class="two-col">
           <div class="field">
-            <label for="f-game">Jogo principal</label>
+            <label data-i18n="t99" for="f-game">Jogo principal</label>
             <select id="f-game" name="game">
               <option>League of Legends</option>
               <option>Valorant</option>
               <option>CS2</option>
               <option>Fortnite</option>
-              <option>Outro</option>
+              <option data-i18n="t100" value="Outro">Outro</option>
             </select>
           </div>
           <div class="field">
-            <label for="f-freq">Lives por semana</label>
+            <label data-i18n="t101" for="f-freq">Lives por semana</label>
             <select id="f-freq" name="freq">
-              <option>1 a 2</option>
-              <option selected>3 a 4</option>
-              <option>5 ou mais</option>
+              <option data-i18n="t102" value="1 a 2">1 a 2</option>
+              <option data-i18n="t103" value="3 a 4" selected>3 a 4</option>
+              <option data-i18n="t104" value="5 ou mais">5 ou mais</option>
             </select>
           </div>
         </div>
         <fieldset class="field">
-          <legend>O que te interessa</legend>
+          <legend data-i18n="t105">O que te interessa</legend>
           <div class="choice">
-            <label><input type="radio" id="f-plan-p" name="plan" value="Parceria" checked> Parceria</label>
-            <label><input type="radio" id="f-plan-s" name="plan" value="Serviço"> Serviço</label>
+            <label><input type="radio" id="f-plan-p" name="plan" value="Parceria" checked> <span data-i18n="t47">Parceria</span></label>
+            <label><input type="radio" id="f-plan-s" name="plan" value="Serviço"> <span data-i18n="t56">Serviço</span></label>
           </div>
         </fieldset>
         <div class="field">
-          <label for="f-contact">Onde a gente te chama</label>
+          <label data-i18n="t106" for="f-contact">Onde a gente te chama</label>
           <input type="text" id="f-contact" name="contact" placeholder="Discord, WhatsApp ou e-mail" required>
-          <small>Só usamos para responder sobre a proposta.</small>
+          <small data-i18n="t107">Só usamos para responder sobre a proposta.</small>
         </div>
-        <p class="err" id="err" hidden>Preencha nome, canal e contato para a gente conseguir te responder.</p>
-        <button class="btn btn-night" type="submit">Enviar</button>
+        <p data-i18n="t108" class="err" id="err" hidden>Preencha nome, canal e contato para a gente conseguir te responder.</p>
+        <button data-i18n="t109" class="btn btn-night" type="submit">Enviar</button>
       </form>
 
       <div class="done" id="done" hidden>
-        <h3 class="display">Recebido.</h3>
-        <p>Valeu! A gente assiste umas lives suas e te chama pelo contato que você mandou. Foi isso que recebemos:</p>
+        <h3 data-i18n="t110" class="display">Recebido.</h3>
+        <p data-i18n="t111">Valeu! A gente assiste umas lives suas e te chama pelo contato que você mandou. Foi isso que recebemos:</p>
         <div class="summary" id="summary"></div>
-        <button class="btn btn-night" type="button" id="again">Editar resposta</button>
+        <button data-i18n="t112" class="btn btn-night" type="button" id="again">Editar resposta</button>
       </div>
     </div>
   </section>
@@ -559,12 +568,175 @@ footer .logo .mark { width: 24px; height: 24px; }
     <a class="logo" href="#topo" aria-label="Editarium, voltar ao topo">
       <svg class="mark" aria-hidden="true"><use href="#mark"/></svg><span>EDITARIUM</span>
     </a>
-    <span>Da live pro canal · editarium.io</span>
+    <span data-i18n="t113">Da live pro canal · editarium.io</span>
   </div>
 </footer>
 
 <script>
 (() => {
+  // i18n: Portuguese is the HTML default; visitors whose browser language is pt-* (Brazil, Portugal...)
+  // keep it, everyone else gets English. The PT/EN button overrides and is remembered per browser.
+  const EN = {
+    "t0": "How it works",
+    "t1": "Clients",
+    "t2": "Plans",
+    "t3": "FAQ",
+    "t4": "Get my channel",
+    "t5": "[ in ] VOD editing for streamers",
+    "t6": "You play.<br><em>We cut.</em>",
+    "t7": "Your clips channel, without editing a thing. We grab your Twitch VOD, edit the match, make the thumbnail, title and Shorts, and only publish on YouTube after you say OK.",
+    "t8": "A new video every day",
+    "t9": "Stream today, video on the channel tomorrow.",
+    "t10": "You just play",
+    "t11": "No links to send, no clips to pick, no editing.",
+    "t12": "Low price",
+    "t13": "Free partnership, or affordable per-video editing.",
+    "t14": "Get my clips channel",
+    "t15": "See how it works",
+    "t16": "<i></i>VOD · 6h12 stream",
+    "t17": "<i style=\"background: var(--yellow)\"></i>kill or death",
+    "t18": "<i style=\"background: var(--white)\"></i>dragon, baron, tower",
+    "t19": "<i style=\"background: rgba(255,255,255,.55)\"></i>talking to chat",
+    "t20": "From VOD to video",
+    "t21": "You stream. We handle the rest.",
+    "t22": "Each video runs about 35 minutes: the start of the stream, the runes and the full match, minus the dead time. If the stream was short, we combine it with the next one.",
+    "t23": "00:00 · you",
+    "t24": "00:10 · us",
+    "t25": "00:20 · us",
+    "t26": "00:30 · you",
+    "t27": "You go live",
+    "t28": "Play like you always do. We pull the VOD straight from your Twitch or YouTube channel.",
+    "t29": "We find the match and cut it",
+    "t30": "We pull the match from the Riot API and cut recalls, grey screens and long silences. The plays stay.",
+    "t31": "We package it",
+    "t32": "Thumbnail with your face, title, description with chapters, subtitles and the chat messages you read on stream.",
+    "t33": "You approve, we upload",
+    "t34": "You see the finished video first. Nothing goes to YouTube without your OK, not even scheduled.",
+    "t35": "Who works with us",
+    "t36": "Titiltei’s channel, edited by us",
+    "t37": "We started editing Titiltei’s matches in November. Viewers noticed the difference in the comments (translated from Portuguese).",
+    "t38": "the editing is top notch, with champion soundtrack music",
+    "t39": "Now that’s editing worthy of the gameplay",
+    "t40": "damn, props to the editor.",
+    "t41": "the music is spectacular during the match, including the shift between tension and release, the contrast is perfect",
+    "t42": "8 likes",
+    "t43": "I want a channel like this",
+    "t44": "Two ways to work together",
+    "t45": "Partnership or service",
+    "t46": "In a partnership we create and run a clips channel for you. With the service you pay for the editing and publish wherever you want.",
+    "t47": "Partnership",
+    "t48": "Clips channel",
+    "t49": "Free. We split the AdSense.",
+    "t50": "For streamers who want a clips channel running without spending money or time on editing.",
+    "t51": "We build the channel in your style: avatar, banner, thumbnail template.",
+    "t52": "A new video for every day you stream.",
+    "t53": "Shorts cut from the best moments of each video.",
+    "t54": "The channel is yours. You own the account and can end it anytime.",
+    "t55": "I want the partnership",
+    "t56": "Service",
+    "t57": "Per-video editing",
+    "t58": "Affordable, per video or per bundle",
+    "t59": "For streamers who already have a YouTube channel and only want the editing. Most of the cutting is automated, so it costs much less than a full-time editor.",
+    "t60": "The same complete video: editing, thumbnail, title, chapters and subtitles.",
+    "t61": "You publish, or we publish on your channel with your OK.",
+    "t62": "Shorts as an add-on, if you want.",
+    "t63": "Quote based on how many streams you do per week.",
+    "t64": "Get a quote",
+    "t65": "Every video comes with",
+    "t66": "Ready to upload",
+    "t67": "The edited video",
+    "t68": "One or two matches, audio leveled to the YouTube standard (−14 LUFS).",
+    "t69": "Thumbnail",
+    "t70": "A real photo of you over the skin, in your channel’s style.",
+    "t71": "title.txt",
+    "t72": "Title and description",
+    "t73": "Spoiler-free, with chapters for each match already marked.",
+    "t74": "subtitles.srt",
+    "t75": "Subtitles",
+    "t76": "Generated from the stream transcript, ready for YouTube.",
+    "t77": "The best moments in vertical format, also spoiler-free.",
+    "t78": "Chat messages",
+    "t79": "The messages you read on stream show up on screen at the right moment.",
+    "t80": "Before you ask",
+    "t81": "Is the clips channel in my name?",
+    "t82": "Yes. In a partnership, the channel account is yours and we join as managers. If you want to stop, you remove our access and the channel stays yours, with every video.",
+    "t83": "How does the AdSense split work?",
+    "t84": "The standard deal is half and half of the clips channel’s revenue. The agreement is put in writing before the first video.",
+    "t85": "Which games do you edit?",
+    "t86": "We started with League of Legends, because the cutting uses match data. Other games are coming gradually. If you play something else, reach out anyway and we’ll talk.",
+    "t87": "Do I need to do anything during the stream?",
+    "t88": "No. Stream like you always do. If you want, we’ll send a few tips that make the video better, like showing your rune page before the match.",
+    "t89": "How long until the video is ready?",
+    "t90": "The video is out the day after the stream. Stream every day and you get a new video every day. Short streams get combined with the next one so the video isn’t too short.",
+    "t91": "How much does it cost?",
+    "t92": "The partnership costs nothing: we get paid through the AdSense split of the clips channel. With the service you pay per video or per monthly bundle, and since most of the cutting is automated, the price is well below a full-time editor.",
+    "t93": "Can I ask for changes before it goes up?",
+    "t94": "Yes. You approve every video, thumbnail and title. Anything you don’t like, we redo before publishing.",
+    "t95": "Let’s build your channel",
+    "t96": "Tell us who you are. We’ll watch a few of your streams and reply with a proposal.",
+    "t97": "Your name or handle",
+    "t98": "Twitch or YouTube channel",
+    "t99": "Main game",
+    "t100": "Other",
+    "t101": "Streams per week",
+    "t102": "1–2",
+    "t103": "3–4",
+    "t104": "5 or more",
+    "t105": "What are you interested in",
+    "t106": "Where can we reach you",
+    "t107": "We only use it to reply about your proposal.",
+    "t108": "Fill in your name, channel and contact so we can get back to you.",
+    "t109": "Send",
+    "t110": "Received.",
+    "t111": "Thanks! We’ll watch a few of your streams and reach out through the contact you sent. Here’s what we got:",
+    "t112": "Edit answer",
+    "t113": "From stream to channel · editarium.io"
+    };
+  const ATTRS = [
+    ['nav.nav', 'aria-label', 'Main'],
+    ['.nav .logo', 'aria-label', 'Editarium, home'],
+    ['footer .logo', 'aria-label', 'Editarium, back to top'],
+    ['.tl', 'aria-label', 'Example: a 6-hour stream with the chosen stretch between the brackets'],
+    ['.channel img', 'alt', 'Vods do Titiltei channel icon'],
+    ['#f-channel', 'placeholder', 'twitch.tv/yournick'],
+    ['#f-contact', 'placeholder', 'Discord, WhatsApp or email'],
+    ['meta[name=description]', 'content', 'Your clips channel, without editing a thing. VOD editing for streamers.']
+  ];
+  const UI = {
+    pt: { match: 'partida', sending: 'Enviando...', send: 'Enviar', failed: 'Não conseguimos enviar agora. Tenta de novo em alguns segundos.',
+          name: 'Nome', channel: 'Canal', game: 'Jogo', perWeek: 'lives/semana', plan: 'Interesse', contact: 'Contato',
+          other: 'EN', otherLabel: 'Switch to English' },
+    en: { match: 'match', sending: 'Sending...', send: 'Send', failed: 'We couldn’t send it right now. Try again in a few seconds.',
+          name: 'Name', channel: 'Channel', game: 'Game', perWeek: 'streams/week', plan: 'Interest', contact: 'Contact',
+          other: 'PT', otherLabel: 'Mudar para português' }
+  };
+  const i18nNodes = [...document.querySelectorAll('[data-i18n]')];
+  const ptHtml = new Map(i18nNodes.map((n) => [n, n.innerHTML]));
+  const ptAttr = ATTRS.map(([sel, attr]) => { const el = document.querySelector(sel); return el && el.getAttribute(attr); });
+  let L = 'pt';
+  const setLang = (lang) => {
+    L = lang;
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+    for (const n of i18nNodes) n.innerHTML = lang === 'en' ? (EN[n.dataset.i18n] ?? ptHtml.get(n)) : ptHtml.get(n);
+    ATTRS.forEach(([sel, attr, en], k) => { const el = document.querySelector(sel); if (el) el.setAttribute(attr, lang === 'en' ? en : ptAttr[k]); });
+    const btn = document.getElementById('lang');
+    btn.textContent = UI[lang].other;
+    btn.setAttribute('aria-label', UI[lang].otherLabel);
+    document.getElementById('f-lang').value = lang;
+    show(i);
+  };
+  const browserLang = () => {
+    const first = (navigator.languages && navigator.languages[0]) || navigator.language || 'pt';
+    return /^pt(-|$)/i.test(first) ? 'pt' : 'en';
+  };
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (_) {}
+  document.getElementById('lang').addEventListener('click', () => {
+    const next = L === 'pt' ? 'en' : 'pt';
+    try { localStorage.setItem('lang', next); } catch (_) {}
+    setLang(next);
+  });
+
   // Timeline: a 6h12 live (372 min). Event pips, then the [ ] window jumps between matches.
   const TOTAL = 372;
   const track = document.getElementById('track');
@@ -602,10 +774,11 @@ footer .logo .mark { width: 24px; height: 24px; }
     const [a, b, game] = windows[n];
     win.style.left = (a / TOTAL * 100) + '%';
     win.style.width = ((b - a) / TOTAL * 100) + '%';
-    sel.textContent = '[ in ] ' + fmt(a) + ' → [ out ] ' + fmt(b) + ' · partida ' + game;
+    sel.textContent = '[ in ] ' + fmt(a) + ' → [ out ] ' + fmt(b) + ' · ' + UI[L].match + ' ' + game;
   };
   show(i);
   const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setLang(saved === 'pt' || saved === 'en' ? saved : browserLang());
   if (!still) setInterval(() => { i = (i + 1) % windows.length; show(i); }, 2600);
 
   // Plan buttons preselect the radio in the form.
@@ -620,23 +793,25 @@ footer .logo .mark { width: 24px; height: 24px; }
   const done = document.getElementById('done');
   const err = document.getElementById('err');
   const submitBtn = form.querySelector('button[type=submit]');
+  const ERR_KEY = 't108';
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const d = new FormData(form);
+    const txt = (sel) => { const el = form.querySelector(sel); return el ? el.textContent.trim() : ''; };
     const need = ['name', 'channel', 'contact'];
     if (need.some((k) => !String(d.get(k) || '').trim())) {
-      err.textContent = 'Preencha nome, canal e contato para a gente conseguir te responder.';
+      err.textContent = L === 'en' ? EN[ERR_KEY] : ptHtml.get(err);
       err.hidden = false; return;
     }
     err.hidden = true;
     document.getElementById('summary').textContent =
-      'Nome: ' + d.get('name') + '\n' +
-      'Canal: ' + d.get('channel') + '\n' +
-      'Jogo: ' + d.get('game') + ' · ' + d.get('freq') + ' lives/semana\n' +
-      'Interesse: ' + d.get('plan') + '\n' +
-      'Contato: ' + d.get('contact');
+      UI[L].name + ': ' + d.get('name') + '\n' +
+      UI[L].channel + ': ' + d.get('channel') + '\n' +
+      UI[L].game + ': ' + txt('#f-game option:checked') + ' · ' + txt('#f-freq option:checked') + ' ' + UI[L].perWeek + '\n' +
+      UI[L].plan + ': ' + txt('input[name=plan]:checked + span') + '\n' +
+      UI[L].contact + ': ' + d.get('contact');
     if (LIVE) {
-      submitBtn.disabled = true; submitBtn.textContent = 'Enviando...';
+      submitBtn.disabled = true; submitBtn.textContent = UI[L].sending;
       try {
         const r = await fetch('/', {
           method: 'POST',
@@ -645,10 +820,10 @@ footer .logo .mark { width: 24px; height: 24px; }
         });
         if (!r.ok) throw new Error(String(r.status));
       } catch (_) {
-        err.textContent = 'Não conseguimos enviar agora. Tenta de novo em alguns segundos.';
+        err.textContent = UI[L].failed;
         err.hidden = false; return;
       } finally {
-        submitBtn.disabled = false; submitBtn.textContent = 'Enviar';
+        submitBtn.disabled = false; submitBtn.textContent = UI[L].send;
       }
     }
     form.hidden = true;
