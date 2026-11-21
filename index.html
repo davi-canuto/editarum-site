@@ -128,6 +128,10 @@ body::before {
 .hero h1 em { font-style: normal; color: var(--yellow); }
 .hero .sub { font-size: clamp(18px, 2vw, 21px); max-width: 60ch; color: #E4E8FF; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero-points { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; max-width: 900px; }
+.hero-points li { border-left: 5px solid var(--yellow); padding: 4px 0 4px 14px; display: grid; gap: 2px; }
+.hero-points b { font-family: var(--f-display); font-stretch: 112%; font-weight: 800; font-size: 19px; text-transform: uppercase; color: var(--yellow); line-height: 1.15; }
+.hero-points span { font-size: 15px; color: #E4E8FF; line-height: 1.4; }
 
 /* Live timeline with in/out selection */
 .tl { display: grid; gap: 14px; min-width: 0; }
@@ -301,6 +305,11 @@ footer .logo .mark { width: 24px; height: 24px; }
       <span class="label" style="color: var(--yellow);">[ in ] edição de lives para streamers</span>
       <h1 class="display">Você joga.<br><em>A gente corta.</em></h1>
       <p class="sub">Seu canal de cortes, sem você editar nada. A gente pega o VOD da Twitch, edita a partida, faz thumb, título e Shorts, e só publica no YouTube depois do seu ok.</p>
+      <ul class="hero-points">
+        <li><b>Vídeo novo todo dia</b><span>Fez live, tem vídeo no canal no dia seguinte.</span></li>
+        <li><b>Você só joga</b><span>Nada de mandar link, separar trecho ou editar.</span></li>
+        <li><b>Preço baixo</b><span>Parceria sem custo, ou edição por vídeo que cabe no bolso.</span></li>
+      </ul>
       <div class="hero-cta">
         <a class="btn btn-yellow" href="#quero">Quero meu canal de cortes</a>
         <a class="btn btn-ghost" href="#como">Ver como funciona</a>
@@ -330,14 +339,14 @@ footer .logo .mark { width: 24px; height: 24px; }
     <div class="inner">
       <div class="head">
         <span class="label">Do VOD ao vídeo</span>
-        <h2 class="display">Você manda o link. O resto é com a gente.</h2>
+        <h2 class="display">Você faz a live. O resto é com a gente.</h2>
         <p>Cada vídeo tem uns 35 minutos: o começo da live, as runas e a partida inteira, sem o tempo morto. Se a live foi curta, juntamos com a próxima.</p>
       </div>
       <div class="steps">
         <div class="step">
           <span class="tc">00:00 · você</span>
-          <h3>Manda o link da live</h3>
-          <p>O link do VOD na Twitch ou da live no YouTube. Mais nada.</p>
+          <h3>Faz a sua live</h3>
+          <p>Joga como sempre. A gente puxa o VOD direto do seu canal na Twitch ou no YouTube.</p>
         </div>
         <div class="step">
           <span class="tc">00:10 · a gente</span>
@@ -401,7 +410,7 @@ footer .logo .mark { width: 24px; height: 24px; }
           <p>Para quem quer um canal de cortes rodando sem gastar nada nem perder tempo editando.</p>
           <ul>
             <li>A gente cria o canal com a sua cara: avatar, banner, padrão de thumb.</li>
-            <li>Vídeos novos toda semana a partir das suas lives.</li>
+            <li>Vídeo novo todo dia que você fizer live.</li>
             <li>Shorts tirados dos melhores momentos de cada vídeo.</li>
             <li>O canal é seu. Você é dono da conta e pode encerrar quando quiser.</li>
           </ul>
@@ -410,8 +419,8 @@ footer .logo .mark { width: 24px; height: 24px; }
         <article class="offer">
           <span class="label">Serviço</span>
           <h3 class="display">Edição por vídeo</h3>
-          <span class="price">Pago por vídeo ou por pacote</span>
-          <p>Para quem já tem canal no YouTube e quer só a edição, no ritmo que escolher.</p>
+          <span class="price">Barato, por vídeo ou por pacote</span>
+          <p>Para quem já tem canal no YouTube e quer só a edição. Boa parte do corte é automática, então sai bem mais barato que um editor fixo.</p>
           <ul>
             <li>O mesmo vídeo completo: edição, thumb, título, capítulos e legendas.</li>
             <li>Você publica, ou a gente publica no seu canal com o seu ok.</li>
@@ -466,7 +475,11 @@ footer .logo .mark { width: 24px; height: 24px; }
         </details>
         <details>
           <summary>Quanto tempo leva para o vídeo ficar pronto?</summary>
-          <p>Combinamos o calendário com você. O padrão é subir alguns dias depois da live, em dias fixos da semana.</p>
+          <p>O vídeo da live sai no dia seguinte. Quem faz live todo dia tem vídeo novo todo dia. Live curta a gente junta com a próxima, para o vídeo não ficar curto demais.</p>
+        </details>
+        <details>
+          <summary>Quanto custa?</summary>
+          <p>Na parceria, nada: a gente se paga com a divisão do AdSense do canal de cortes. No serviço, você paga por vídeo ou por pacote mensal, e como boa parte do corte é automática, o preço fica bem abaixo de um editor fixo.</p>
         </details>
         <details>
           <summary>Posso pedir para mudar algo antes de subir?</summary>
