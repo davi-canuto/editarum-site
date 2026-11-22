@@ -17,6 +17,7 @@
 <link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:image" content="https://editarium.com.br/icon-512.png">
+<script>document.documentElement.classList.add('js')</script>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -294,6 +295,86 @@ footer .foot-meta a { color: var(--yellow); font-weight: 700; text-decoration: n
 footer .foot-meta a:hover { text-decoration: underline; }
 .apply .lede .mail { font-size: 16px; }
 .apply .lede .mail a { font-weight: 800; color: var(--night); overflow-wrap: anywhere; }
+
+/* ===== Motion layer: ideas from Spell UI / Inspira UI rebuilt in plain CSS+JS, no libraries.
+   Progressive: without JS or with reduced motion the page looks exactly as before. ===== */
+:root { --ease-out: cubic-bezier(.16,1,.3,1); }
+
+/* Hero: slow light beams from the top (Spell "Light Rays", in CSS) + film grain */
+.hero { position: relative; isolation: isolate; }
+.hero::before {
+  content: ""; position: absolute; z-index: -1; inset: 0; transform-origin: 50% 0; pointer-events: none;
+  background: conic-gradient(from 180deg at 50% -8%,
+    transparent 0deg, rgba(255,255,255,.08) 6deg, transparent 12deg, transparent 22deg,
+    rgba(255,221,0,.10) 27deg, transparent 33deg, transparent 46deg, rgba(120,140,255,.10) 51deg, transparent 58deg,
+    transparent 302deg, rgba(120,140,255,.10) 309deg, transparent 314deg, transparent 327deg,
+    rgba(255,221,0,.09) 333deg, transparent 338deg, transparent 348deg, rgba(255,255,255,.08) 354deg, transparent 360deg);
+  -webkit-mask: radial-gradient(120% 95% at 50% 0%, #000 25%, transparent 80%); mask: radial-gradient(120% 95% at 50% 0%, #000 25%, transparent 80%);
+  animation: beams 22s ease-in-out infinite alternate;
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .12; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@keyframes beams { from { rotate: -6deg; } to { rotate: 6deg; } }
+
+/* Headline: word-by-word blur reveal (Spell "Words Stagger") */
+.js .hero h1 .w { display: inline-block; opacity: 0; filter: blur(12px); translate: 0 .18em;
+  animation: wordIn .9s var(--ease-out) forwards; animation-delay: calc(var(--i) * 70ms + 120ms); }
+@keyframes wordIn { to { opacity: 1; filter: blur(0); translate: 0 0; } }
+.js .hero .label, .js .hero .sub, .js .hero-points, .js .hero-cta { opacity: 0; filter: blur(6px); animation: wordIn .9s var(--ease-out) forwards; }
+.js .hero .label { animation-delay: 40ms; } .js .hero .sub { animation-delay: 480ms; }
+.js .hero-points { animation-delay: 580ms; } .js .hero-cta { animation-delay: 680ms; }
+.js .tl { opacity: 0; translate: 0 16px; animation: wordIn 1s var(--ease-out) .8s forwards; }
+
+/* Scroll reveal with stagger (Inspira "Blur Fade") */
+.js .rv { opacity: 0; translate: 0 22px; filter: blur(8px);
+  transition: opacity .8s var(--ease-out), translate .8s var(--ease-out), filter .8s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 80ms); }
+.js .rv.in { opacity: 1; translate: 0 0; filter: blur(0); }
+.js .steps.rv { opacity: 1; filter: none; translate: none; }
+
+/* Thumbnail reel (Spell "Marquee" + "Tilt Card" with spotlight) */
+.reel-cap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 12px;
+  color: var(--on-dark-muted); letter-spacing: .06em; text-transform: uppercase; }
+.reel-cap b { color: var(--yellow); font-weight: 700; }
+.reel { --gap: 18px; position: relative; overflow: hidden; margin-top: -18px; padding-block: 10px 18px;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.reel-track { display: flex; gap: var(--gap); width: max-content; animation: reel 60s linear infinite; }
+.reel:hover .reel-track { animation-play-state: paused; }
+@keyframes reel { to { translate: calc(-50% - var(--gap) / 2) 0; } }
+.tcard { --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%; flex: none; width: clamp(240px, 30vw, 340px); aspect-ratio: 16/9;
+  border-radius: 6px; overflow: hidden; position: relative; transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .5s var(--ease-out), box-shadow .4s var(--ease-out); box-shadow: 0 12px 30px -12px rgba(5,8,30,.7); }
+.tcard img { width: 100%; height: 100%; object-fit: cover; display: block; transition: scale .6s var(--ease-out); }
+.tcard::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(260px circle at var(--mx) var(--my), rgba(255,255,255,.3), transparent 60%); mix-blend-mode: soft-light; }
+.tcard:hover { transition-duration: .12s; box-shadow: 0 0 0 3px var(--yellow), 0 24px 50px -16px rgba(5,8,30,.85); }
+.tcard:hover img { scale: 1.04; }
+.tcard:hover::after { opacity: 1; }
+
+/* Spotlight that follows the cursor on cards (Inspira "Card Spotlight") */
+.spot { position: relative; isolation: isolate; }
+.spot::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1; pointer-events: none; opacity: 0;
+  transition: opacity .35s; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255,221,0,.14), transparent 55%); }
+.spot:hover::before { opacity: 1; }
+.offer.spot::before, .kit div.spot::before { background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(31,45,158,.09), transparent 55%); }
+.offer.feat.spot::before { background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.14), transparent 55%); }
+
+/* Process: a yellow playhead sweeps the top rule when the section enters */
+.steps { position: relative; }
+.steps::before { content: ""; position: absolute; top: -3px; left: 0; height: 3px; width: 0; background: var(--yellow);
+  transition: width 1.6s var(--ease-out) .2s; }
+.steps.in::before { width: 100%; }
+.steps:not(.rv)::before { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before, .reel-track { animation: none; }
+  .js .hero h1 .w, .js .hero .label, .js .hero .sub, .js .hero-points, .js .hero-cta, .js .tl { animation: none; opacity: 1; filter: none; translate: none; }
+  .js .rv { opacity: 1; filter: none; translate: none; transition: none; }
+  .tcard { transform: none; }
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -406,6 +487,10 @@ footer .foot-meta a:hover { text-decoration: underline; }
               <span>Shaco AP jungle · Grão-Mestre</span>
             </div>
           </div>
+        </div>
+        <div class="reel-cap"><span data-i18n="t115"><b>[ thumbs ]</b> feitas pela gente pro canal</span><span data-i18n="t116">passe o mouse</span></div>
+        <div class="reel" aria-label="Thumbs feitas pela gente">
+          <div class="reel-track" id="reel"></div>
         </div>
         <div class="quotes">
           <figure class="quote" style="margin:0"><p data-i18n="t38">ediçao ficou top, musiquinha de trilha dos campeoes</p><footer><span>@cazuzajardineiro12</span><span data-i18n="t42">8 curtidas</span></footer></figure>
@@ -707,7 +792,9 @@ footer .foot-meta a:hover { text-decoration: underline; }
     "t111": "Thanks! We’ll watch a few of your streams and reach out through the contact you sent. Here’s what we got:",
     "t112": "Edit answer",
     "t113": "From stream to channel · editarium.com.br",
-    "t114": "Prefer email?"
+    "t114": "Prefer email?",
+    "t115": "<b>[ thumbs ]</b> made by us for the channel",
+    "t116": "hover to explore"
     };
   const ATTRS = [
     ['nav.nav', 'aria-label', 'Main'],
@@ -848,6 +935,95 @@ footer .foot-meta a:hover { text-decoration: underline; }
     done.scrollIntoView({ block: 'nearest' });
   });
   document.getElementById('again').addEventListener('click', () => { done.hidden = true; form.hidden = false; });
+
+  // ===== Motion layer =====
+  // Scramble: the timecode digits roll and settle left to right when the [ ] window moves (Spell "Special Text").
+  let scr;
+  const scramble = () => {
+    const target = sel.textContent;
+    clearInterval(scr);
+    let f = 0;
+    scr = setInterval(() => {
+      f++;
+      sel.textContent = [...target].map((ch, k) => (/\d/.test(ch) && k > f * 1.6) ? String((Math.random() * 10) | 0) : ch).join('');
+      if (f * 1.6 > target.length) { clearInterval(scr); sel.textContent = target; }
+    }, 28);
+  };
+  if (!still) setInterval(scramble, 2600);
+
+  // Headline words: wrap each word (keeps <br> and <em>) for the staggered blur reveal; redone after a language switch.
+  const h1 = document.querySelector('.hero h1');
+  const wrapWords = () => {
+    let wi = 0;
+    const walk = (node) => {
+      for (const n of [...node.childNodes]) {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.append(part); return; }
+            const w = document.createElement('span');
+            w.className = 'w'; w.style.setProperty('--i', wi++); w.textContent = part;
+            frag.append(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1 && !n.classList.contains('w')) walk(n);
+      }
+    };
+    walk(h1);
+  };
+  wrapWords();
+  document.getElementById('lang').addEventListener('click', wrapWords);
+
+  // Thumbnail reel: the list twice so the loop is seamless.
+  const thumbs = ['roubando-baron-epicamente-canal-2', 'grao-mestre-vs-9-mestres', 'partida-dificil-de-shaco-ap-canal-2',
+    'titiltei-de-fizz-vs-tatu-e-ayel', 'live-1911-shaco-a', 'shaco-ap-duas-partidas', 'video-shaco-ap-4', 'live-1911-shaco-b'];
+  const reel = document.getElementById('reel');
+  [...thumbs, ...thumbs].forEach((t, k) => {
+    const c = document.createElement('div');
+    c.className = 'tcard';
+    if (k >= thumbs.length) c.setAttribute('aria-hidden', 'true');
+    const img = new Image();
+    img.loading = 'lazy'; img.decoding = 'async'; img.alt = k < thumbs.length ? 'Thumb' : ''; img.src = 'img/thumbs/' + t + '.jpg';
+    c.append(img);
+    reel.append(c);
+  });
+
+  // Tilt + spotlight follow the cursor (mouse only).
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  document.querySelectorAll('.quote, .offer, .kit div').forEach((el) => el.classList.add('spot'));
+  if (fine && !still) {
+    document.addEventListener('pointermove', (e) => {
+      const el = e.target.closest && e.target.closest('.tcard, .spot');
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      el.style.setProperty('--mx', (x * 100) + '%');
+      el.style.setProperty('--my', (y * 100) + '%');
+      if (el.classList.contains('tcard')) {
+        el.style.setProperty('--ry', ((x - .5) * 14) + 'deg');
+        el.style.setProperty('--rx', ((.5 - y) * 10) + 'deg');
+      }
+    }, { passive: true });
+    document.addEventListener('pointerout', (e) => {
+      const el = e.target.closest && e.target.closest('.tcard');
+      if (el && !el.contains(e.relatedTarget)) { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); }
+    });
+  }
+
+  // Scroll reveal: section heads, steps, quotes, offers, kit, FAQ; siblings stagger.
+  const groups = '.head, .steps, .step, .case-top, .reel-cap, .quote, .offer, .kit div, .faq details, .apply .lede, #form';
+  document.querySelectorAll(groups).forEach((el) => {
+    el.classList.add('rv');
+    const sibs = [...el.parentElement.children].filter((x) => x.matches(groups));
+    el.style.setProperty('--i', Math.min(sibs.indexOf(el), 6));
+  });
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((es) => es.forEach((en) => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -8% 0px', threshold: .12 });
+    document.querySelectorAll('.rv').forEach((el) => io.observe(el));
+  } else document.querySelectorAll('.rv').forEach((el) => el.classList.add('in'));
 })();
 </script>
 </body>
