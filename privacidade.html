@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Política de Privacidade · Editarium</title>
+<meta name="description" content="Como o Editarium trata os dados de quem usa o site e de quem conecta um canal do YouTube.">
+<meta name="theme-color" content="#0A0F2E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Legal pages: same brand tokens as index.html (night header/footer, yellow accents, paper body). */
+:root {
+  --cobalt: #1F2D9E; --yellow: #FFDD00; --night: #0A0F2E; --white: #FFFFFF;
+  --paper: #F3F4FB; --line: #D9DCF0; --muted: #4A507A; --on-dark-muted: #AEB6F5;
+  --f-display: "Archivo", "Arial Black", system-ui, sans-serif;
+  --f-body: "Archivo", system-ui, -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, monospace;
+  --max: 760px;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--night); font-family: var(--f-body); font-size: 17px; line-height: 1.6; }
+.inner { max-width: var(--max); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.mark { width: 1em; height: 1em; flex: none; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--yellow); font-family: var(--f-display); font-weight: 900; font-stretch: 112%; letter-spacing: .04em; }
+.logo .mark { width: 26px; height: 26px; }
+header { background: var(--night); padding-block: 18px; }
+.hero { background: var(--cobalt); color: var(--white); padding-block: 48px 40px; }
+.hero h1 { font-family: var(--f-display); font-weight: 900; font-stretch: 112%; font-size: clamp(30px, 6vw, 44px); line-height: 1.05; margin: 0 0 12px; }
+.hero p { margin: 0; color: #DDE1FF; font-family: var(--f-mono); font-size: 13px; }
+main { padding-block: 40px 56px; }
+h2 { font-family: var(--f-display); font-weight: 800; font-size: 22px; line-height: 1.2; margin: 36px 0 10px; }
+h2::before { content: "[ "; color: var(--cobalt); }
+h2::after { content: " ]"; color: var(--cobalt); }
+p, li { overflow-wrap: anywhere; }
+ul { padding-left: 22px; }
+li { margin-bottom: 6px; }
+a { color: var(--cobalt); font-weight: 700; }
+.box { background: var(--white); border: 1px solid var(--line); border-left: 6px solid var(--yellow); border-radius: 10px; padding: 16px 18px; margin: 20px 0; }
+.lang-sep { margin: 56px 0 0; padding-top: 32px; border-top: 2px dashed var(--line); }
+.lang-sep .tag { font-family: var(--f-mono); font-size: 12px; color: var(--muted); letter-spacing: .08em; }
+footer { background: var(--night); color: var(--on-dark-muted); padding-block: 32px; font-size: 14px; }
+footer .inner { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; }
+footer a { color: var(--yellow); font-weight: 700; text-decoration: none; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mark" viewBox="0 0 80 80">
+      <path d="M10 14H27V22H19V58H27V66H10Z" fill="currentColor"/>
+      <path d="M70 14H53V22H61V58H53V66H70Z" fill="currentColor"/>
+      <path d="M33 27L53 40L33 53Z" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="inner">
+    <a class="logo" href="./" aria-label="Editarium, página inicial"><svg class="mark" aria-hidden="true"><use href="#mark"/></svg><span>EDITARIUM</span></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="inner">
+    <h1>Política de Privacidade</h1>
+    <p>Última atualização: 23 de novembro de 2026</p>
+  </div>
+</section>
+
+<main class="inner">
+  <p>O <strong>Editarium</strong> (editarium.com.br) é um estúdio de edição de vídeos para streamers: transformamos lives em vídeos e Shorts e, quando o criador autoriza, publicamos esses vídeos no canal dele do YouTube. Esta política explica quais dados usamos, para quê e como você controla isso.</p>
+
+  <div class="box">
+    <strong>Resumo:</strong> só acessamos o seu canal do YouTube se você autorizar, usamos esse acesso apenas para publicar e organizar os vídeos que editamos para você, não vendemos nem compartilhamos seus dados, e você pode revogar o acesso a qualquer momento.
+  </div>
+
+  <h2>Uso dos Serviços de API do YouTube</h2>
+  <p>O Editarium usa os <strong>Serviços de API do YouTube</strong> (YouTube API Services) para enviar vídeos ao canal do criador que nos autorizou. Ao conectar o seu canal, você também concorda com os <a href="https://www.youtube.com/t/terms" rel="noopener">Termos de Serviço do YouTube</a>, e os dados tratados pelo Google seguem a <a href="https://policies.google.com/privacy" rel="noopener">Política de Privacidade do Google</a>.</p>
+
+  <h2>Quais dados acessamos</h2>
+  <p>Quando você conecta um canal do YouTube pelo login do Google (OAuth), pedimos apenas estas permissões:</p>
+  <ul>
+    <li><strong>Enviar vídeos</strong> (<code>youtube.upload</code>): publicar no seu canal os vídeos, as miniaturas (thumbs) e os metadados (título, descrição, tags, data de publicação) que editamos para você.</li>
+    <li><strong>Gerenciar o conteúdo do canal</strong> (<code>youtube.force-ssl</code>): adicionar legendas e telas finais aos vídeos que publicamos e ler informações básicas do canal (nome e ID) para conferir que o vídeo vai para o canal certo.</li>
+  </ul>
+  <p>Não acessamos a sua senha do Google, e-mails, contatos, dados de pagamento, nem configurações de monetização.</p>
+
+  <h2>Como usamos e guardamos</h2>
+  <ul>
+    <li>O Google nos entrega um <strong>token de acesso</strong>, que guardamos de forma protegida e usamos apenas para as ações descritas acima, sempre nos vídeos que fazemos para você.</li>
+    <li>Guardamos o nome e o ID do canal para identificar a qual criador cada vídeo pertence.</li>
+    <li>Os arquivos de vídeo usados na edição (trechos das suas lives) ficam conosco apenas enquanto o vídeo está sendo produzido e são apagados depois de entregues.</li>
+    <li>O uso que o Editarium faz das informações recebidas das APIs do Google segue a <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Política de Dados do Usuário dos Serviços de API do Google</a>, incluindo os requisitos de Uso Limitado (Limited Use).</li>
+  </ul>
+
+  <h2>Compartilhamento</h2>
+  <p>Não vendemos, alugamos nem compartilhamos dados do seu canal com terceiros. Os dados só trafegam entre o Editarium e o Google/YouTube, para executar as ações que você autorizou, ou quando a lei exigir.</p>
+
+  <h2>Como revogar o acesso</h2>
+  <p>Você pode remover o acesso do Editarium ao seu canal a qualquer momento na página de permissões da sua Conta do Google: <a href="https://security.google.com/settings/security/permissions" rel="noopener">security.google.com/settings/security/permissions</a>. Depois disso, não conseguimos mais publicar no seu canal.</p>
+
+  <h2>Exclusão dos dados</h2>
+  <p>Para apagarmos o token e as informações do seu canal, escreva para <a href="mailto:editarium.contacts@gmail.com">editarium.contacts@gmail.com</a>. Excluímos tudo em até 30 dias. Também apagamos esses dados quando a parceria ou o serviço termina.</p>
+
+  <h2>Dados do site</h2>
+  <ul>
+    <li><strong>Formulário de contato:</strong> nome, canal e forma de contato que você enviar, usados só para responder ao seu pedido.</li>
+    <li><strong>Preferência de idioma:</strong> guardada no seu navegador (armazenamento local), sem cookies de rastreamento.</li>
+    <li>O site carrega fontes do Google Fonts, que pode registrar o acesso conforme a política do Google.</li>
+  </ul>
+
+  <h2>Contato</h2>
+  <p>Dúvidas sobre esta política ou sobre os seus dados: <a href="mailto:editarium.contacts@gmail.com">editarium.contacts@gmail.com</a>.</p>
+
+  <section class="lang-sep" lang="en">
+    <span class="tag">ENGLISH VERSION</span>
+    <h2>Privacy Policy</h2>
+    <p><strong>Editarium</strong> (editarium.com.br) is a video editing studio for streamers. We turn live streams into videos and Shorts and, when the creator authorizes it, publish those videos to the creator's YouTube channel.</p>
+    <p><strong>YouTube API Services.</strong> Editarium uses the YouTube API Services to upload videos to the channel of the creator who authorized us. By connecting your channel you agree to the <a href="https://www.youtube.com/t/terms" rel="noopener">YouTube Terms of Service</a>; data handled by Google is subject to the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.</p>
+    <p><strong>Data we access.</strong> Through Google sign-in (OAuth) we request only: <code>youtube.upload</code>, to publish the videos, thumbnails and metadata (title, description, tags, publish date) we edit for you; and <code>youtube.force-ssl</code>, to add captions and end screens to those videos and to read basic channel information (name and ID) to make sure each video goes to the right channel. We never access your password, e-mail, contacts, payment or monetization settings.</p>
+    <p><strong>Use and storage.</strong> The access token issued by Google is stored securely and used only for the actions above, on the videos we produce for you. We keep the channel name and ID to know which creator each video belongs to. Source footage is deleted after the video is delivered. Editarium's use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+    <p><strong>Sharing.</strong> We do not sell, rent or share your channel data with third parties. Data only flows between Editarium and Google/YouTube to perform the actions you authorized, or when required by law.</p>
+    <p><strong>Revoking access.</strong> You can remove Editarium's access at any time at <a href="https://security.google.com/settings/security/permissions" rel="noopener">security.google.com/settings/security/permissions</a>.</p>
+    <p><strong>Deletion.</strong> To have your token and channel data deleted, e-mail <a href="mailto:editarium.contacts@gmail.com">editarium.contacts@gmail.com</a>; we delete it within 30 days, and also when the partnership or service ends.</p>
+    <p><strong>Website.</strong> The contact form data is used only to reply to you; the language preference is kept in your browser's local storage (no tracking cookies); fonts are loaded from Google Fonts.</p>
+    <p><strong>Contact:</strong> <a href="mailto:editarium.contacts@gmail.com">editarium.contacts@gmail.com</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="inner">
+    <a class="logo" href="./" aria-label="Editarium, página inicial"><svg class="mark" aria-hidden="true"><use href="#mark"/></svg><span>EDITARIUM</span></a>
+    <span><a href="privacidade.html">Privacidade</a> · <a href="termos.html">Termos</a> · <a href="mailto:editarium.contacts@gmail.com">editarium.contacts@gmail.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
