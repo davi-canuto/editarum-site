@@ -205,20 +205,57 @@ body::before {
 .clients { background: var(--cobalt); color: var(--white); }
 .clients .head .label { color: var(--yellow); }
 .clients .head p { color: var(--on-dark-muted); }
-.case { display: grid; gap: clamp(28px, 4vw, 44px); }
-.case-top { display: flex; }
-.channel { display: flex; align-items: center; gap: 18px; min-width: 0; }
-.channel img { width: 88px; height: 88px; border-radius: 50%; flex: none; box-shadow: 0 0 0 4px var(--yellow); }
-.channel b { display: block; font-family: var(--f-display); font-stretch: 112%; font-weight: 800; font-size: 22px; line-height: 1.2; }
-.channel span { color: var(--on-dark-muted); font-size: 15px; }
-.channel a { color: var(--yellow); font-weight: 700; font-size: 15px; }
-.quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.quote { background: var(--night); border-radius: 6px; padding: 22px; display: grid; gap: 14px; align-content: space-between; min-width: 0; }
-.quote p { font-family: var(--f-display); font-stretch: 105%; font-weight: 700; font-size: 18px; line-height: 1.35; }
-.quote p::before { content: "\201C"; display: block; font-family: var(--f-display); font-stretch: 125%; font-weight: 900; font-size: 48px; line-height: .6; color: var(--yellow); margin-bottom: 10px; }
-.quote footer { background: none; padding: 0; display: flex; justify-content: space-between; gap: 10px; font-family: var(--f-mono); font-size: 12px; color: #C9CEF0; }
-.quote footer span:last-child { color: var(--yellow); }
+.case { display: grid; gap: clamp(40px, 6vw, 72px); }
+.case > * { min-width: 0; }
 .case .btn { justify-self: start; }
+.sub-label { color: var(--yellow); display: block; margin-bottom: 18px; }
+
+/* Featured video */
+.feature { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: center; }
+@media (max-width: 900px) { .feature { grid-template-columns: 1fr; } }
+.video { position: relative; display: block; border-radius: 6px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--cobalt-deep); box-shadow: 8px 8px 0 var(--yellow); }
+.video img { width: 100%; height: 100%; object-fit: cover; display: block; transition: scale .5s var(--ease-out); }
+.video:hover img { scale: 1.03; }
+.video::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(10,15,46,.55)); }
+.video .play { position: absolute; z-index: 1; left: 50%; top: 50%; translate: -50% -50%; width: 84px; height: 84px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--yellow); color: var(--night); box-shadow: 0 8px 28px rgba(0,0,0,.35); transition: scale .2s ease; }
+.video:hover .play { scale: 1.08; }
+.video .play svg { width: 46px; height: 46px; }
+.video .dur { position: absolute; z-index: 1; right: 12px; bottom: 12px; font-family: var(--f-mono); font-size: 13px; font-weight: 700; background: rgba(10,15,46,.85); color: var(--white); padding: 3px 8px; border-radius: 3px; }
+@media (prefers-reduced-motion: reduce) { .video img, .video .play { transition: none; } }
+.feature-info { display: grid; gap: 22px; min-width: 0; }
+.channel { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.channel img { width: 52px; height: 52px; border-radius: 50%; flex: none; box-shadow: 0 0 0 3px var(--yellow); }
+.channel b { display: block; font-family: var(--f-display); font-stretch: 112%; font-weight: 800; font-size: 18px; line-height: 1.2; }
+.channel span { color: var(--on-dark-muted); font-size: 14px; }
+.feature h3 { margin-top: 8px; font-family: var(--f-display); font-stretch: 112%; font-weight: 900; font-size: clamp(24px, 2.8vw, 32px); line-height: 1.1; text-transform: uppercase; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid rgba(255,255,255,.2); border-bottom: 2px solid rgba(255,255,255,.2); }
+.stat { padding: 14px 0; display: grid; gap: 2px; min-width: 0; }
+.stat + .stat { padding-left: 16px; border-left: 1px solid rgba(255,255,255,.16); }
+.stat b { font-family: var(--f-display); font-stretch: 112%; font-weight: 900; font-size: clamp(22px, 2.4vw, 30px); line-height: 1; color: var(--yellow); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stat span { font-size: 13.5px; color: var(--on-dark-muted); }
+.stats-note { font-family: var(--f-mono); font-size: 12px; color: var(--on-dark-muted); margin-top: -12px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.tags li { font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
+
+/* Comments wall */
+.wall { columns: 3 260px; column-gap: 16px; }
+.comment { break-inside: avoid; margin: 0 0 16px; background: var(--night); border-radius: 8px; padding: 18px; display: grid; gap: 12px; }
+.comment-head { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.comment-head i { width: 32px; height: 32px; border-radius: 50%; flex: none; display: grid; place-items: center; font-style: normal; font-weight: 800; font-size: 14px; background: var(--cobalt); color: var(--white); text-transform: uppercase; }
+.comment-head span { font-size: 14px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.comment p { font-size: 16.5px; line-height: 1.45; color: #EEF0FF; }
+.comment.big p { font-family: var(--f-display); font-stretch: 108%; font-weight: 800; font-size: 21px; line-height: 1.25; color: var(--white); }
+.comment footer { background: none; padding: 0; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: 11.5px; color: var(--on-dark-muted); }
+.comment footer .likes { color: var(--yellow); font-weight: 700; }
+
+/* Channels we run */
+.chans { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.chan { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; align-items: center; padding: 20px; border-radius: 8px; background: var(--night); min-width: 0; }
+.chan img { width: 56px; height: 56px; border-radius: 50%; grid-row: span 2; box-shadow: 0 0 0 3px var(--yellow); }
+.chan b { font-family: var(--f-display); font-stretch: 112%; font-weight: 800; font-size: 19px; line-height: 1.15; }
+.chan span { font-size: 14.5px; color: var(--on-dark-muted); }
+.chan p { grid-column: 1 / -1; font-size: 15px; color: #E4E8FF; margin-top: 8px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.16); }
 
 /* Offers */
 .offers { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 24px; }
@@ -475,29 +512,72 @@ footer .foot-meta a:hover { text-decoration: underline; }
   <section class="band clients" id="clientes">
     <div class="inner">
       <div class="head">
-        <span data-i18n="t35" class="label">Quem já está com a gente</span>
-        <h2 data-i18n="t36" class="display">O canal do Titiltei, editado pela gente</h2>
-        <p data-i18n="t37">Começamos a editar as partidas do Titiltei em novembro. O público notou a diferença nos comentários.</p>
+        <span data-i18n="t35" class="label">Resultados</span>
+        <h2 data-i18n="t36" class="display">Os canais do Titiltei, editados pela gente</h2>
+        <p data-i18n="t37">Desde novembro editamos os dois canais do Titiltei, Grão-Mestre de Shaco jungle: o principal, com vídeos de 10 a 15 minutos com tema, e o de VODs, com a partida inteira.</p>
       </div>
       <div class="case">
-        <div class="case-top">
-          <div class="channel">
-            <img src="img/vods-do-titiltei.jpg" alt="Ícone do canal Vods do Titiltei" width="88" height="88">
-            <div>
-              <b>Vods do Titiltei</b>
-              <span>Shaco AP jungle · Grão-Mestre</span>
+        <div class="feature">
+          <a class="video" href="https://youtu.be/S89Gi8_f4tc" target="_blank" rel="noopener" aria-label="Assistir no YouTube: Essa build de Shaco AD está roubada!!">
+            <img src="img/thumbs/titi-principal-olenbs.jpg" alt="Thumb do vídeo: Titiltei cozinhando a build de Shaco" width="1280" height="720" loading="lazy" decoding="async">
+            <span class="play" aria-hidden="true"><svg><use href="#mark"/></svg></span>
+            <span class="dur">12:49</span>
+          </a>
+          <div class="feature-info">
+            <div class="channel">
+              <img src="img/titiltei.jpg" alt="" width="52" height="52">
+              <div><b>TiTiltei</b><span data-i18n="t117">63,4 mil inscritos · canal principal</span></div>
             </div>
+            <div>
+              <span data-i18n="t118" class="label" style="color: var(--yellow);">Último vídeo editado</span>
+              <h3>Essa build de Shaco AD está roubada!!</h3>
+            </div>
+            <div class="stats">
+              <div class="stat"><b data-i18n="t119">13,3 mil</b><span data-i18n="t120">visualizações</span></div>
+              <div class="stat"><b>484</b><span data-i18n="t121">curtidas</span></div>
+              <div class="stat"><b>35</b><span data-i18n="t122">comentários</span></div>
+            </div>
+            <p data-i18n="t123" class="stats-note">Nas primeiras 24 horas no ar · 24/11/2026</p>
+            <ul class="tags" data-i18n="t124" aria-label="O que entrou na edição">
+              <li>Visual arcade 8-bit</li><li>Trilha que segue o clima da partida</li><li>Abertura em 3D</li><li>Thumb e título</li>
+            </ul>
+            <a data-i18n="t134" class="btn btn-yellow" href="https://youtu.be/S89Gi8_f4tc" target="_blank" rel="noopener">Assistir no YouTube</a>
           </div>
         </div>
-        <div class="reel-cap"><span data-i18n="t115"><b>[ thumbs ]</b> feitas pela gente pro canal</span><span data-i18n="t116">passe o mouse</span></div>
-        <div class="reel" aria-label="Thumbs feitas pela gente">
-          <div class="reel-track" id="reel"></div>
+        <div>
+          <div class="reel-cap"><span data-i18n="t115"><b>[ thumbs ]</b> feitas pela gente pros canais</span><span data-i18n="t116">passe o mouse</span></div>
+          <div class="reel" aria-label="Thumbs feitas pela gente" style="margin-top: 0;">
+            <div class="reel-track" id="reel"></div>
+          </div>
         </div>
-        <div class="quotes">
-          <figure class="quote" style="margin:0"><p data-i18n="t38">ediçao ficou top, musiquinha de trilha dos campeoes</p><footer><span>@cazuzajardineiro12</span><span data-i18n="t42">8 curtidas</span></footer></figure>
-          <figure class="quote" style="margin:0"><p data-i18n="t39">Agora sim edição digna da gameplay</p><footer><span>@TheViniciusbruno</span><span></span></footer></figure>
-          <figure class="quote" style="margin:0"><p data-i18n="t40">caralho, parabéns ao editor.</p><footer><span>@wenndeldourado8886</span><span></span></footer></figure>
-          <figure class="quote" style="margin:0"><p data-i18n="t41">a música está espetacular durante a partida, inclusive a mudança quando tá tendo tensão e relaxamento, o contraste está perfeito</p><footer><span>@souogr</span><span></span></footer></figure>
+        <div>
+          <span data-i18n="t135" class="label sub-label">O que o público comentou</span>
+          <div class="wall">
+            <figure class="comment big"><div class="comment-head"><i>e</i><span>@eucaipiratv</span></div><p data-i18n="t125">Editor se dedicou</p><footer><span>TiTiltei</span><span class="likes" data-i18n="t42">8 curtidas</span></footer></figure>
+            <figure class="comment"><div class="comment-head"><i>s</i><span>@souogr</span></div><p data-i18n="t41">a música está espetacular durante a partida, inclusive a mudança quando tá tendo tensão e relaxamento, o contraste está perfeito</p><footer><span>Vods do Titiltei</span><span></span></footer></figure>
+            <figure class="comment"><div class="comment-head"><i>j</i><span>@jacksonsousa8954</span></div><p data-i18n="t126">Bixo, ficou mto massa esse layout retro de 8 bits.</p><footer><span>TiTiltei</span><span></span></footer></figure>
+            <figure class="comment big"><div class="comment-head"><i>c</i><span>@cazuzajardineiro12</span></div><p data-i18n="t38">ediçao ficou top, musiquinha de trilha dos campeoes</p><footer><span>Vods do Titiltei</span><span class="likes" data-i18n="t42">8 curtidas</span></footer></figure>
+            <figure class="comment"><div class="comment-head"><i>s</i><span>@sidneyzZ_</span></div><p data-i18n="t127">essa edição ficou cabulosa</p><footer><span>TiTiltei</span><span class="likes" data-i18n="t131">3 curtidas</span></footer></figure>
+            <figure class="comment"><div class="comment-head"><i>g</i><span>@guivictor624</span></div><p data-i18n="t128">que isso hein, editor merece um aumento</p><footer><span>TiTiltei</span><span class="likes" data-i18n="t132">1 curtida</span></footer></figure>
+            <figure class="comment big"><div class="comment-head"><i>T</i><span>@TheViniciusbruno</span></div><p data-i18n="t39">Agora sim edição digna da gameplay</p><footer><span>Vods do Titiltei</span><span></span></footer></figure>
+            <figure class="comment"><div class="comment-head"><i>m</i><span>@minhavidaintelectuall</span></div><p data-i18n="t129">a ediçao em outro nível. toma</p><footer><span>TiTiltei</span><span></span></footer></figure>
+            <figure class="comment"><div class="comment-head"><i>c</i><span>@carmine7511</span></div><p data-i18n="t130">Edição muito boa!</p><footer><span>TiTiltei</span><span class="likes" data-i18n="t133">2 curtidas</span></footer></figure>
+          </div>
+        </div>
+        <div>
+          <span data-i18n="t136" class="label sub-label">Os dois canais que a gente toca</span>
+          <div class="chans">
+            <div class="chan">
+              <img src="img/titiltei.jpg" alt="" width="56" height="56">
+              <b>TiTiltei</b><span data-i18n="t137">Canal principal · 63,4 mil inscritos</span>
+              <p data-i18n="t138">Vídeo editado de 10 a 15 minutos: gancho, uma partida condensada, trilha e efeitos.</p>
+            </div>
+            <div class="chan">
+              <img src="img/vods-do-titiltei.jpg" alt="" width="56" height="56">
+              <b>Vods do Titiltei</b><span data-i18n="t139">Canal de VODs</span>
+              <p data-i18n="t140">A partida inteira, com runas e chat na tela, cerca de 35 minutos por vídeo.</p>
+            </div>
+          </div>
         </div>
         <a data-i18n="t43" class="btn btn-yellow" href="#quero" data-plan="parceria">Quero um canal assim</a>
       </div>
@@ -714,9 +794,9 @@ footer .foot-meta a:hover { text-decoration: underline; }
     "t32": "Thumbnail with your face, title, description with chapters, subtitles and the chat messages you read on stream.",
     "t33": "You approve, we upload",
     "t34": "You see the finished video first. Nothing goes to YouTube without your OK, not even scheduled.",
-    "t35": "Who works with us",
-    "t36": "Titiltei’s channel, edited by us",
-    "t37": "We started editing Titiltei’s matches in November. Viewers noticed the difference in the comments (translated from Portuguese).",
+    "t35": "Results",
+    "t36": "Titiltei’s channels, edited by us",
+    "t37": "Since November we edit both of Titiltei’s channels (a Grandmaster Shaco jungler): the main one, with 10 to 15 minute themed videos, and the VOD channel, with the full match.",
     "t38": "the editing is top notch, with champion soundtrack music",
     "t39": "Now that’s editing worthy of the gameplay",
     "t40": "damn, props to the editor.",
@@ -794,15 +874,40 @@ footer .foot-meta a:hover { text-decoration: underline; }
     "t112": "Edit answer",
     "t113": "From stream to channel · editarium.com.br",
     "t114": "Prefer email?",
-    "t115": "<b>[ thumbs ]</b> made by us for the channel",
-    "t116": "hover to explore"
+    "t115": "<b>[ thumbs ]</b> made by us for the channels",
+    "t116": "hover to explore",
+    "t117": "63.4K subscribers · main channel",
+    "t118": "Latest edited video",
+    "t119": "13.3K",
+    "t120": "views",
+    "t121": "likes",
+    "t122": "comments",
+    "t123": "In the first 24 hours · Nov 24, 2026",
+    "t124": "<li>8-bit arcade look</li><li>Soundtrack that follows the match’s mood</li><li>3D intro</li><li>Thumbnail and title</li>",
+    "t125": "The editor really put in the work",
+    "t126": "Man, this 8-bit retro layout looks awesome.",
+    "t127": "this editing is insane",
+    "t128": "whoa, the editor deserves a raise",
+    "t129": "editing on another level. take that",
+    "t130": "Really good editing!",
+    "t131": "3 likes",
+    "t132": "1 like",
+    "t133": "2 likes",
+    "t134": "Watch on YouTube",
+    "t135": "What viewers said (translated from Portuguese)",
+    "t136": "The two channels we run",
+    "t137": "Main channel · 63.4K subscribers",
+    "t138": "Edited 10 to 15 minute video: a hook, one condensed match, soundtrack and effects.",
+    "t139": "VOD channel",
+    "t140": "The full match, with runes and chat on screen, about 35 minutes per video."
     };
   const ATTRS = [
     ['nav.nav', 'aria-label', 'Main'],
     ['.nav .logo', 'aria-label', 'Editarium, home'],
     ['footer .logo', 'aria-label', 'Editarium, back to top'],
     ['.tl', 'aria-label', 'Example: a 6-hour stream with the chosen stretch between the brackets'],
-    ['.channel img', 'alt', 'Vods do Titiltei channel icon'],
+    ['.video', 'aria-label', 'Watch on YouTube: This Shaco AD build is broken!!'],
+    ['.video img', 'alt', 'Video thumbnail: Titiltei cooking up the Shaco build'],
     ['#f-channel', 'placeholder', 'twitch.tv/yournick'],
     ['#f-contact', 'placeholder', 'Discord, WhatsApp or email'],
     ['meta[name=description]', 'content', 'Your clips channel, without editing a thing. VOD editing for streamers.']
@@ -992,7 +1097,7 @@ footer .foot-meta a:hover { text-decoration: underline; }
 
   // Tilt + spotlight follow the cursor (mouse only).
   const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  document.querySelectorAll('.quote, .offer, .kit div').forEach((el) => el.classList.add('spot'));
+  document.querySelectorAll('.comment, .chan, .offer, .kit div').forEach((el) => el.classList.add('spot'));
   if (fine && !still) {
     document.addEventListener('pointermove', (e) => {
       const el = e.target.closest && e.target.closest('.tcard, .spot');
@@ -1013,7 +1118,7 @@ footer .foot-meta a:hover { text-decoration: underline; }
   }
 
   // Scroll reveal: section heads, steps, quotes, offers, kit, FAQ; siblings stagger.
-  const groups = '.head, .steps, .step, .case-top, .reel-cap, .quote, .offer, .kit div, .faq details, .apply .lede, #form';
+  const groups = '.head, .steps, .step, .feature, .reel-cap, .comment, .chan, .offer, .kit div, .faq details, .apply .lede, #form';
   document.querySelectorAll(groups).forEach((el) => {
     el.classList.add('rv');
     const sibs = [...el.parentElement.children].filter((x) => x.matches(groups));
